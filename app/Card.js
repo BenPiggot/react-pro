@@ -2,6 +2,22 @@ import React, { Component, PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import CheckList from './CheckList';
 import marked from 'marked';
+import { DragSource } from 'react-dnd';
+import constants from './constants';
+
+const cardDragSpec = {
+  beginDrag(props) {
+    return {
+      id: props.id
+    }
+  }
+}
+
+let collectDrag = (connect, monitor) => {
+  return { 
+    connectDragSource: connect.dragSource()
+  }
+}
 
 class Card extends Component {
   constructor() {
@@ -16,6 +32,8 @@ class Card extends Component {
   }
 
   render() {
+    const { connectDragSource } = this.props;
+
     let cardDetails; 
     if (this.state.showDetails) {
       cardDetails = (
@@ -36,17 +54,19 @@ class Card extends Component {
       backgroundColor: this.props.color
     };
     
-    return <div className="card">
-      <div style={sideColor} />
-      <div className="card__title" onClick={this.toggleDetails.bind(this)}>
-        {this.props.title}
+    return connectDragSource(
+      <div className="card">
+        <div style={sideColor} />
+        <div className="card__title" onClick={this.toggleDetails.bind(this)}>
+          {this.props.title}
+        </div>
+        <ReactCSSTransitionGroup transitionName="toggle"
+                                 transitionEnterTimeout={250}
+                                 transitionLeaveTimeout={250}>
+        {cardDetails}
+        </ ReactCSSTransitionGroup>
       </div>
-      <ReactCSSTransitionGroup transitionName="toggle"
-                               transitionEnterTimeout={250}
-                               transitionLeaveTimeout={250}>
-      {cardDetails}
-      </ ReactCSSTransitionGroup>
-    </div>
+    );
   }
 };
 
@@ -56,7 +76,9 @@ Card.propTypes = {
   description: PropTypes.string,
   color: PropTypes.string,
   tasks: PropTypes.arrayOf(PropTypes.object),
-  taskCallbacks: PropTypes.object
+  taskCallbacks: PropTypes.object,
+  cardCallbacks: PropTypes.object,
+  connectDragSource: PropTypes.func.isRequired
 };
 
-export default Card; 
+export default DragSource(constants.CARD, cardDragSpec, collectDrag)(Card); 
