@@ -13,7 +13,7 @@ const cardDragSpec = {
   }
 }
 
-const cardDropSepc = {
+const cardDropSpec = {
   hover(props, monitor) {
     const draggedId = monitor.getItem().id;
     props.cardCallbacks.updatePosition(draggedId, props.id)
@@ -96,6 +96,6 @@ Card.propTypes = {
 };
 
 const dragHighOrderCard = DragSource(constants.CARD, cardDragSpec, collectDrag)(Card); 
-const dragDropHighOrderCard = DropSource(constants.CARD, cardDropSpec, collectDrop)(dragHighOrderCard)
+const dragDropHighOrderCard = DropTarget(constants.CARD, cardDropSpec, collectDrop)(dragHighOrderCard)
 
 export default dragDropHighOrderCard;
