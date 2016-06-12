@@ -25,6 +25,10 @@ ul {
   margin: 0;
 }
 
+label {
+  margin-right: 5px;
+}
+
 .app {
   white-space: nowrap;
   height: 100%
@@ -136,7 +140,7 @@ ul {
 .card.big {
   position: absolute;
   width: 450px;
-  height: 200px;
+  height: 350px;
   margin: auto;
   padding: 15px;
   top: 0;
