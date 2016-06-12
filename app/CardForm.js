@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 class CardForm extends Component {
   handleChange(field, event) {
-    this.props.handleChange(feild, event.target.value)
+    this.props.handleChange(field, event.target.value)
   }
 
   handleClose(event) {

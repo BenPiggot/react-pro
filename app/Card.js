@@ -4,6 +4,7 @@ import CheckList from './CheckList';
 import marked from 'marked';
 import { DragSource, DropTarget } from 'react-dnd';
 import constants from './constants';
+import { Link } from 'react-router';
 
 const cardDragSpec = {
   beginDrag(props) {
@@ -74,6 +75,7 @@ class Card extends Component {
     return connectDropTarget(connectDragSource(
       <div className="card">
         <div style={sideColor} />
+        <div className='card__edit'><Link to={'/edit/'+this.props.id}>Edit</Link></div>
         <div className="card__title" onClick={this.toggleDetails.bind(this)}>
           {this.props.title}
         </div>

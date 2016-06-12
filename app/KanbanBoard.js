@@ -8,12 +8,12 @@ class KanbanBoard extends Component {
   render() {
     let cardModal = this.props.children && React.cloneElement(this.props.children, {
       cards: this.props.cards,
-      cardCallback: this.props.cardCallbacks
+      cardCallbacks: this.props.cardCallbacks
     });
 
     return <div className='app'>
       <Link to='/new' className='float-button'>+</Link>
-      
+
       <List id='todo' title='To Do' taskCallbacks={this.props.taskCallbacks} 
       cardCallbacks={this.props.cardCallbacks}
       cards={this.props.cards.filter((card) => card.status === 'todo')} />

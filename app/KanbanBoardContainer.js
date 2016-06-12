@@ -75,10 +75,10 @@ class KanbanBoardContainer extends Component {
 
     this.setState({ cards: nextState });
 
-    fetch(`${API_URL}/cards`, {
+    fetch(`${API_URL}/cards/${card.id}`, {
       method: 'put',
       headers: API_HEADERS,
-      body: json.stringify(card)
+      body: JSON.stringify(card)
     })
     .then((response) => {
       if (!response.ok) {
