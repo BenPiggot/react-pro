@@ -3,7 +3,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import CheckList from './CheckList';
 import marked from 'marked';
 import { DragSource, DropTarget } from 'react-dnd';
-import constants from './constants';
+import constants from '../constants';
 import { Link } from 'react-router';
 
 const cardDragSpec = {
