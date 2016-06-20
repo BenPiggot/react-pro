@@ -1,6 +1,6 @@
 import AppDispatcher from '../AppDispatcher.js';
 import constants from '../constants.js';
-import { ReduceStore } 'flux/utils';
+import { ReduceStore } from 'flux/utils';
 
 class CardStore extends ReduceStore {
   getInitialState() {
@@ -9,6 +9,8 @@ class CardStore extends ReduceStore {
 
   reduce(state, action) {
     switch(action.type) {
+      case constants.FETCH_CARDS_SUCCESS:
+        return action.payload.response;
       default:
         return state;
     }
