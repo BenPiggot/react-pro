@@ -1,5 +1,5 @@
 import AppDispatcher from '../AppDispatcher.js';
-import contants from '../contants.js';
+import constants from '../constants.js';
 import KanbanAPI from '../api/KanbanApi.js';
 
 let TaskActionCreators = {
@@ -20,7 +20,7 @@ let TaskActionCreators = {
   },
 
   toggleTask(cardId, task, taskIndex) {
-    AppDispatcher..dispatchAsync(KanbanAPI.toggleTask(cardId, task), {
+    AppDispatcher.dispatchAsync(KanbanAPI.toggleTask(cardId, task), {
       request: constants.TOGGLE_TASK,
       success: constants.TOGGLE_TASK_SUCCESS,
       failure: constants.TOGGLE_TASK_ERROR      

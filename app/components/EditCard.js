@@ -1,9 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import CardForm from './CardForm';
+import CardStore from '../stores/CardStore.js';
+import CardActionCreators from '../actions/CardActionCreators.js';
+import 'babel-polyfill';
 
 class EditCard extends Component {
   componentWillMount() {
-    let card = this.props.cards.find((card) => card.id == this.props.params.card_id);
+    let card = CardStore.getCard(parseInt(this.props.params.card_id));
     this.setState(card)
   }
 
@@ -13,7 +16,7 @@ class EditCard extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.cardCallbacks.updateCard(this.state);
+    CardActionCreators.updateCard(CardStore.getCard(parseInt(this.props.params.card_id)), this.state);
     this.props.history.pushState(null, '/');
   }
 
