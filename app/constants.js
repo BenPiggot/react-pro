@@ -9,6 +9,8 @@ export default {
   CREATE_CARD_SUCCESS: 'create card success',
   CREATE_CARD_ERROR: 'create card error',
 
+  TOGGLE_CARD_DETAILS: 'toggle card details',
+
   UPDATE_CARD: 'update card',
   UPDATE_CARD_SUCCESS: 'update card success',
   UPDATE_CARD_ERROR: 'update card error',
@@ -20,6 +22,9 @@ export default {
   PERSIST_CARD_DRAG: 'persist card drag',
   PERSIST_CARD_DRAG_SUCCESS: 'persist card drag success',
   PERSIST_CARD_DRAG_ERROR: 'persist card drag error',
+
+  CREATE_DRAFT: 'create draft',
+  UPDATE_DRAFT: 'update draft',
 
   CREATE_TASK: 'create task',
   CREATE_TASK_SUCCESS: 'create task success',
