@@ -6,6 +6,7 @@ import { DragSource, DropTarget } from 'react-dnd';
 import constants from '../constants';
 import { Link } from 'react-router';
 import CardActionCreators from '../actions/CardActionCreators.js';
+import shallowCompare from 'react-addons-shallow-compare';
 
 const cardDragSpec = {
   beginDrag(props) {
@@ -46,6 +47,10 @@ class Card extends Component {
     this.state = {
       showDetails: false
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   toggleDetails() {
